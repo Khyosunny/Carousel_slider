@@ -168,7 +168,7 @@
       }
 
       slide();
-      let slideTime = setInterval(slide, 2000);
+      let slideTime = setInterval(slide, 4000);
 
       // 버튼 클릭 이벤트
 
@@ -177,10 +177,7 @@
 
       next.addEventListener("click", () => {
         slide();
-        clearInterval(slideTime);
-        setTimeout(() => {
-          slideTime = setInterval(slide, 2000);
-        }, 2000);
+        slideTimer();
       });
 
       prev.addEventListener("click", () => {
@@ -202,6 +199,7 @@
           fistSlide.classList.add("showing");
           firstDotItem.classList.add("dot__on");
         }
+        slideTimer();
       });
 
       // 도트 클릭 이벤트
@@ -213,6 +211,7 @@
       function dotClickEvent(n) {
         slideIndex = n;
         dotSlide(slideIndex);
+        slideTimer();
       }
 
       function dotSlide(n) {
@@ -227,6 +226,13 @@
         }
         slides[n].classList.add("showing");
         dotItems[n].classList.add("dot__on");
+      }
+
+      function slideTimer() {
+        clearInterval(slideTime);
+        setTimeout(() => {
+          slideTime = setInterval(slide, 4000);
+        }, 2000);
       }
     </script>
   </body>
